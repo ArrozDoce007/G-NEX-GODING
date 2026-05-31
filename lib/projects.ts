@@ -3,7 +3,7 @@ import { Project, ProjectStatus } from './types';
 export const projectsData: Project[] = [
   {
     id: 'arbor-fintech',
-    title: 'Arbor Asset Manager',
+    title: 'Gerente de ativos da Arbor',
     description: 'Plataforma financeira para gestão de ativos e investimentos de alto risco.',
     longDescription: 'Desenvolvimento de uma interface robusta para investidores institucionais, onde a precisão dos dados e a velocidade de execução são críticas.',
     status: ProjectStatus.DELIVERED,
@@ -25,7 +25,7 @@ export const projectsData: Project[] = [
   },
   {
     id: 'pulse-healthtech',
-    title: 'Pulse Patient Care',
+    title: 'Atendimento ao Paciente',
     description: 'Sistema de telemedicina e prontuário eletrônico com UX humanizada.',
     longDescription: 'Uma plataforma que conecta médicos e pacientes de forma fluida, focando em reduzir a ansiedade através de um design limpo.',
     status: ProjectStatus.DELIVERED,
@@ -69,8 +69,8 @@ export const projectsData: Project[] = [
   },
   {
     id: 'curso-tec',
-    title: 'Landing Page Technology Course',
-    description: 'Site de Curso de Tecnologia imersivo.',
+    title: 'Landing Page Curso de Tecnologia',
+    description: 'Site Para Incrição em Curso de Tecnologia imersivo.',
     longDescription: 'Projeto Focado em Estrategia Para Atração de Novos Clientes, Micro-interações.',
     status: ProjectStatus.DELIVERED,
     metrics: [
@@ -92,7 +92,7 @@ export const projectsData: Project[] = [
   {
     id: 'gourmet-prime-site',
     title: 'Gourmet Prime Experience',
-    description: 'Presença digital premium para rede de restaurantes de luxo.',
+    description: 'Presença digital premium para rede de restaurantes.',
     longDescription: 'Foco em fotografia gastronômica de alta qualidade e sistema de reservas online sem fricção.',
     status: ProjectStatus.DELIVERED,
     metrics: [
@@ -112,7 +112,7 @@ export const projectsData: Project[] = [
     image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fm=webp&q=75&fit=crop&w=1000",
   },
   {
-    id: 'flow-ecommerce-app',
+    id: 'flow-ecommerce',
     title: 'Flow E-commerce Experience',
     description: 'Experiência de compra fluida com foco em dispositivos móveis e performance.',
     status: ProjectStatus.DELIVERED,

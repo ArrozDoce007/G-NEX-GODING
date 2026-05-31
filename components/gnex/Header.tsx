@@ -78,9 +78,9 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark }) => {
           </a>
 
           <nav className="hidden lg:flex items-center gap-10">
+            <button onClick={() => handleNavClick('showcase')} className="text-xs uppercase tracking-widest font-bold text-slate-500 dark:text-slate-400 hover:text-brand-purple dark:hover:text-white transition-colors">Showcase</button>
             <button onClick={() => handleNavClick('projects')} className="text-xs uppercase tracking-widest font-bold text-slate-500 dark:text-slate-400 hover:text-brand-purple dark:hover:text-white transition-colors">Portfólio</button>
             <button onClick={() => handleNavClick('methodology')} className="text-xs uppercase tracking-widest font-bold text-slate-500 dark:text-slate-400 hover:text-brand-purple dark:hover:text-white transition-colors">Metodologia</button>
-            <button onClick={() => handleNavClick('showcase')} className="text-xs uppercase tracking-widest font-bold text-slate-500 dark:text-slate-400 hover:text-brand-purple dark:hover:text-white transition-colors">Showcase</button>
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-4">

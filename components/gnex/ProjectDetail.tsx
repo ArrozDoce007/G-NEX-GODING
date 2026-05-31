@@ -27,7 +27,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
           animate={{ opacity: 1, x: 0 }}
           whileTap={{ scale: 0.98 }}
           onClick={onBack}
-          className="flex items-center gap-2 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 px-3 sm:px-4 py-2 -ml-3 sm:-ml-4 rounded-xl transition-all duration-300 mb-8 sm:mb-12 group text-sm sm:text-base"
+          className="flex items-center text-white  bg-brand-purple/30 sm:rounded-2xl shadow-xl shadow-brand-purple/80 gap-2 px-3 sm:px-4 py-2 -ml-3 sm:-ml-4 rounded-xl transition-all duration-300 mb-8 sm:mb-12 group text-sm sm:text-base"
         >
           <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           Voltar para Projetos
