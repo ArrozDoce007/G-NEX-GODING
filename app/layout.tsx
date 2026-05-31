@@ -8,25 +8,37 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'G-NEX.CODING | Web Design & Código de Elite',
-  description: 'Elevando o padrão digital através de interfaces memoráveis e engenharia de software de precisão. Design Web & Código de Elite.',
+  title: 'G-Nex Coding | Portfolio Elite',
+  description: 'Web design e desenvolvimento de alto padrão. Sites modernos, landing pages e aplicações web performáticas.',
   generator: 'v0.app',
+  metadataBase: new URL('https://g-nex-coding.com.br'),
+  verification: {
+    google: 'JHrhXkOVSoGrwyhOiXxSH7hGdAlzs3Juzi2TGIqHjPM',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'pt_BR',
+    url: 'https://g-nex-coding.com.br/',
+    title: 'G-Nex Coding | Portfolio Elite',
+    description: 'Web design e desenvolvimento de alto padrão. Sites modernos, landing pages e aplicações web performáticas.',
+    images: [
+      {
+        url: 'https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/g-nex1.png',
+        width: 1200,
+        height: 630,
+        type: 'image/png',
+        alt: 'G-Nex Coding Portfolio Elite',
+      },
+    ],
+  },
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: 'https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/icon.png',
+        sizes: '32x32',
+        type: 'image/png',
       },
     ],
-    apple: '/apple-icon.png',
   },
 }
 
