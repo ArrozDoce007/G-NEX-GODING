@@ -29,13 +29,13 @@ const Hero: React.FC = () => {
             <div className="relative">
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[16px] sm:rounded-[20px] bg-gradient-to-br from-brand-purple via-violet-500 to-transparent p-[1px]">
                 <div className="w-full h-full rounded-[15px] sm:rounded-[19px] overflow-hidden bg-white dark:bg-slate-950 flex items-center justify-center transition-colors duration-500">
-                  <span className="text-lg sm:text-xl font-bold text-brand-purple dark:text-white">G</span>
+                  <span className="text-lg sm:text-xl font-chakra text-brand-purple dark:text-white">G</span>
                 </div>
               </div>
               <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border-[3px] sm:border-4 border-slate-50 dark:border-[#0a0a0f] shadow-lg shadow-emerald-500/40 animate-pulse transition-colors duration-500" />
             </div>
             <div className="flex flex-col">
-              <h2 className="text-slate-900 dark:text-white text-base sm:text-lg font-bold tracking-tight transition-colors duration-500 uppercase">G-NEX CODING</h2>
+              <h2 className="text-slate-900 dark:text-white text-lg sm:text-xl font-chakra tracking-wider transition-colors duration-500 uppercase">G-NEX CODING</h2>
               <span className="text-brand-purple dark:text-brand-purple/90 text-[8px] sm:text-[9px] font-mono flex items-center gap-2 uppercase tracking-[0.2em] sm:tracking-[0.3em] font-bold">
                 Elite Developer • On Call
               </span>

@@ -71,7 +71,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark }) => {
             <div className="p-1.5 sm:p-2 rounded-xl bg-brand-purple/10 border border-brand-purple/20 group-hover:bg-brand-purple group-hover:rotate-[15deg] transition-all duration-300">
               <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-brand-purple group-hover:text-white" />
             </div>
-            <span className="font-mono text-base sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase">
+            <span className="font-chakra text-xl sm:text-2xl tracking-wider text-slate-900 dark:text-white uppercase">
               G-NEX<span className="hidden sm:inline text-brand-purple">.CODING</span>
               <span className="sm:hidden text-brand-purple">.C</span>
             </span>
