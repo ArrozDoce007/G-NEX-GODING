@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Home, Briefcase, FolderOpen, Lightbulb } from 'lucide-react';
+import { Terminal, Sun, Moon, Home, Briefcase, FolderOpen, Lightbulb } from 'lucide-react';
 
 interface HeaderProps {
   toggleTheme: () => void;
@@ -17,11 +17,11 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, isViewingProject =
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-      
+
       // Detect active section - check from bottom to top of page
       const sections = ['methodology', 'projects', 'showcase', 'home'];
       let current = 'home';
-      
+
       for (const section of sections) {
         if (section === 'home') {
           // Home is active only when at the very top
@@ -74,17 +74,16 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, isViewingProject =
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled 
-            ? 'bg-white/70 dark:bg-slate-900/70 backdrop-blur-2xl shadow-lg shadow-black/5 dark:shadow-black/20 border-b border-black/5 dark:border-white/5' 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+            ? 'bg-white/70 dark:bg-slate-900/70 backdrop-blur-2xl shadow-lg shadow-black/5 dark:shadow-black/20 border-b border-black/5 dark:border-white/5'
             : 'bg-transparent'
-        }`}
+          }`}
       >
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 sm:h-18 md:h-20">
             <a href="#/" className="flex items-center gap-2 sm:gap-3 group">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-brand-purple via-violet-500 to-brand-purple flex items-center justify-center shadow-lg shadow-brand-purple/20 group-hover:shadow-xl group-hover:shadow-brand-purple/30 transition-all duration-300 group-hover:scale-105">
-                <span className="text-white font-bold text-sm sm:text-base md:text-lg">G</span>
+              <div className="p-1.5 sm:p-2 rounded-xl bg-brand-purple/10 border border-brand-purple/20 group-hover:bg-brand-purple group-hover:rotate-[15deg] transition-all duration-300">
+                <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-brand-purple group-hover:text-white" />
               </div>
               <span className="font-chakra text-xl sm:text-2xl tracking-wider text-slate-900 dark:text-white uppercase">
                 G-NEX<span className="text-brand-purple">.CODING</span>
@@ -97,11 +96,10 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, isViewingProject =
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
-                    activeSection === item.id
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${activeSection === item.id
                       ? 'text-brand-purple bg-brand-purple/10'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
-                  }`}
+                    }`}
                 >
                   {item.label}
                 </button>
@@ -154,20 +152,17 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, isViewingProject =
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-xl transition-all duration-300 min-w-[60px] ${
-                    isActive
+                  className={`flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-xl transition-all duration-300 min-w-[60px] ${isActive
                       ? 'text-brand-purple'
                       : 'text-slate-500 dark:text-slate-400'
-                  }`}
+                    }`}
                 >
-                  <div className={`p-1.5 rounded-lg transition-all duration-300 ${
-                    isActive ? 'bg-brand-purple/10' : ''
-                  }`}>
+                  <div className={`p-1.5 rounded-lg transition-all duration-300 ${isActive ? 'bg-brand-purple/10' : ''
+                    }`}>
                     <Icon className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'scale-110' : ''}`} />
                   </div>
-                  <span className={`text-[10px] font-medium transition-all duration-300 ${
-                    isActive ? 'font-bold' : ''
-                  }`}>
+                  <span className={`text-[10px] font-medium transition-all duration-300 ${isActive ? 'font-bold' : ''
+                    }`}>
                     {item.label}
                   </span>
                 </button>
