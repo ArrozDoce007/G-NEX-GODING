@@ -18,16 +18,26 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, isViewingProject =
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
       
-      // Detect active section
-      const sections = ['methodology', 'projects', 'showcase'];
+      // Detect active section - check from bottom to top of page
+      const sections = ['methodology', 'projects', 'showcase', 'home'];
       let current = 'home';
       
       for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 150) {
-            current = section;
+        if (section === 'home') {
+          // Home is active only when at the very top
+          if (window.scrollY < 100) {
+            current = 'home';
+            break;
+          }
+        } else {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            // Section is active when its top is at or above 40% of viewport
+            if (rect.top <= window.innerHeight * 0.4) {
+              current = section;
+              break;
+            }
           }
         }
       }
@@ -35,6 +45,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, isViewingProject =
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call once on mount to set initial state
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
