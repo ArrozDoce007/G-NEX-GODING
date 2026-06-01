@@ -87,7 +87,7 @@ export const projectsData: Project[] = [
       { id: '4', title: 'Cross-browser GL Test', completed: true },
       { id: '5', title: 'Aprovação Estética', completed: true }
     ],
-    image: "https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/curso04.png",
+    image: "https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/G-NEX-CODING/cursotec.png",
   },
   {
     id: 'gourmet-prime-site',

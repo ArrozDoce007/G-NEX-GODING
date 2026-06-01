@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description: 'Web design e desenvolvimento de alto padrão. Sites modernos, landing pages e aplicações web performáticas.',
     images: [
       {
-        url: 'https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/g-nex1.png',
+        url: 'https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/G-NEX-CODING/g-nex1.png',
         width: 1200,
         height: 630,
         type: 'image/png',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: 'https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/icon.png',
+        url: 'https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/G-NEX-CODING/icon.png',
         sizes: '32x32',
         type: 'image/png',
       },
