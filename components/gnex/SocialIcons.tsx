@@ -27,7 +27,7 @@ const SocialIcons: React.FC = () => {
 
       {/* Instagram */}
       <a
-        href="https://www.instagram.com/g_nex.coding?igsh=Zm90enJ3YzJlcDVl"
+        href="https://www.instagram.com/g.nex.coding?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Instagram"
