@@ -17,9 +17,7 @@ export const metadata: Metadata = {
   description: 'Web design e desenvolvimento de alto padrão. Sites modernos, landing pages e aplicações web performáticas.',
   generator: 'v0.app',
   metadataBase: new URL('https://g-nex-coding.com.br'),
-  verification: {
-    google: 'JHrhXkOVSoGrwyhOiXxSH7hGdAlzs3Juzi2TGIqHjPM',
-  },
+  
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
