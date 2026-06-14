@@ -6,8 +6,8 @@ import './globals.css'
 
 const _geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 const _geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
-const chakraPetch = Chakra_Petch({ 
-  weight: "700", 
+const chakraPetch = Chakra_Petch({
+  weight: "700",
   subsets: ["latin"],
   variable: "--font-chakra"
 });
@@ -17,7 +17,11 @@ export const metadata: Metadata = {
   description: 'Web design e desenvolvimento de alto padrão. Sites modernos, landing pages e aplicações web performáticas.',
   generator: 'v0.app',
   metadataBase: new URL('https://g-nex-coding.com.br'),
-  
+
+  robots: process.env.NEXT_PUBLIC_ENV !== 'production'
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
+
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
