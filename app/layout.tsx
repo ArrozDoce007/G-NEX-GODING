@@ -18,10 +18,6 @@ export const metadata: Metadata = {
   generator: 'v0.app',
   metadataBase: new URL('https://g-nex-coding.com.br'),
 
-  robots: process.env.NEXT_PUBLIC_ENV !== 'production'
-    ? { index: true, follow: true }
-    : { index: false, follow: false },
-
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
