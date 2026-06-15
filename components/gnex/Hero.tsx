@@ -49,7 +49,7 @@ const Hero: React.FC = () => {
             className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6 sm:mb-8 tracking-tighter text-shadow-sm"
           >
             <span className="text-slate-900 dark:text-white transition-colors duration-500">{t.hero.titleA}<br className="hidden sm:block" /><span className="sm:hidden"> </span>{t.hero.titleB}</span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-brand-purple via-violet-400 to-violet-600 dark:from-brand-purple dark:to-violet-400">
+            <span className="text-brand-purple bg-clip-text bg-gradient-to-br from-brand-purple via-violet-400 to-violet-600 dark:from-brand-purple dark:to-violet-400">
               {t.hero.titleHighlight}
             </span>
           </motion.h1>

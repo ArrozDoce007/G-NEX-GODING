@@ -28,7 +28,7 @@ const HomeContent: React.FC<HomeContentProps> = ({ onProjectClick }) => {
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-slate-900 dark:text-white tracking-tighter">
             {t.home.showcaseTitleA}<br className="sm:hidden" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-violet-400">{t.home.showcaseTitleB}</span>
+            <span className="text-brand-purple bg-clip-text bg-gradient-to-r from-brand-purple to-violet-400">{t.home.showcaseTitleB}</span>
           </h2>
         </div>
         
