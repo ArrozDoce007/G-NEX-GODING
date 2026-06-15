@@ -1,5 +1,5 @@
 <div align="center">
-<img alt="G-Nex.Coding" src="https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/g-nex1.png" />
+<img alt="G-Nex.Coding" src="https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/G-NEX-CODING/g-nex1.png" />
 </div>
 
 https://g-nex-coding.com.br
