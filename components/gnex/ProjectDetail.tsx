@@ -8,6 +8,7 @@ import Button from './Button';
 import Badge from './Badge';
 import DeliveryTimeline from './DeliveryTimeline';
 import { sendWhatsAppMessage } from '@/lib/whatsapp';
+import { useLanguage } from '@/lib/i18n';
 
 interface ProjectDetailProps {
   project: Project;
@@ -15,6 +16,8 @@ interface ProjectDetailProps {
 }
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
+  const { t } = useLanguage();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [project.id]);
@@ -30,7 +33,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
           className="flex items-center text-white  bg-brand-purple/30 sm:rounded-2xl shadow-xl shadow-brand-purple/80 gap-2 px-3 sm:px-4 py-2 -ml-3 sm:-ml-4 rounded-xl transition-all duration-300 mb-8 sm:mb-12 group text-sm sm:text-base"
         >
           <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-          Voltar para Projetos
+          {t.detail.back}
         </motion.button>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16">
@@ -41,9 +44,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
                 animate={{ opacity: 1, y: 0 }}
                 className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 sm:mb-8"
               >
-                <Badge variant="purple">Web Design & Dev</Badge>
+                <Badge variant="purple">{t.detail.badge}</Badge>
                 <div className="h-4 w-px bg-black/10 dark:bg-white/10 hidden sm:block" />
-                <span className="text-xs sm:text-sm font-mono text-slate-400 dark:text-slate-500 uppercase tracking-widest font-bold">Case ID: {project.id.toUpperCase()}</span>
+                <span className="text-xs sm:text-sm font-mono text-slate-400 dark:text-slate-500 uppercase tracking-widest font-bold">{t.detail.caseId}: {project.id.toUpperCase()}</span>
               </motion.div>
               
               <motion.h1 
@@ -85,11 +88,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
                 <div className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-brand-purple/10 border border-brand-purple/20">
                   <Eye className="w-5 h-5 sm:w-6 sm:h-6 text-brand-purple" />
                 </div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Estratégia de UX & Visual</h2>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">{t.detail.uxTitle}</h2>
               </div>
               <div className="p-6 sm:p-8 md:p-12 glass rounded-xl sm:rounded-2xl md:rounded-[32px] relative overflow-hidden group">
                 <div className="absolute top-0 left-0 w-1 h-full bg-brand-purple opacity-50" />
-                <h3 className="text-[10px] sm:text-xs font-mono text-brand-purple uppercase mb-4 sm:mb-6 tracking-widest font-bold">Processo Criativo</h3>
+                <h3 className="text-[10px] sm:text-xs font-mono text-brand-purple uppercase mb-4 sm:mb-6 tracking-widest font-bold">{t.detail.uxSubtitle}</h3>
                 <p className="text-base sm:text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
                   {project.architecture_summary}
                 </p>
@@ -101,10 +104,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
                 <div className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-slate-100 dark:bg-slate-800 border border-black/5 dark:border-white/10">
                   <Target className="w-5 h-5 sm:w-6 sm:h-6 text-slate-900 dark:text-white" />
                 </div>
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Resultados & Conversão</h2>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">{t.detail.resultsTitle}</h2>
               </div>
               <div className="p-6 sm:p-8 md:p-12 glass rounded-xl sm:rounded-2xl md:rounded-[32px] relative overflow-hidden">
-                <h3 className="text-[10px] sm:text-xs font-mono text-slate-400 dark:text-slate-500 uppercase mb-6 sm:mb-8 md:mb-10 tracking-widest font-bold">Métricas de Sucesso</h3>
+                <h3 className="text-[10px] sm:text-xs font-mono text-slate-400 dark:text-slate-500 uppercase mb-6 sm:mb-8 md:mb-10 tracking-widest font-bold">{t.detail.resultsSubtitle}</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
                   {project.metrics.map((metric) => (
                     <div key={metric.label} className="flex flex-col group">
@@ -144,28 +147,28 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
               <div className="glass rounded-2xl sm:rounded-[32px] md:rounded-[40px] p-6 sm:p-8 md:p-10 border border-black/5 dark:border-white/5 space-y-8 sm:space-y-10 md:space-y-12 shadow-xl shadow-black/5 dark:shadow-none">
                 <div>
                   <div className="flex items-center justify-between mb-6 sm:mb-8 md:mb-10">
-                    <h3 className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 font-bold">Validation Status</h3>
-                    <Badge variant="green">Live</Badge>
+                    <h3 className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 font-bold">{t.detail.validationStatus}</h3>
+                    <Badge variant="green">{t.detail.live}</Badge>
                   </div>
                   <DeliveryTimeline currentStatus={project.status} />
                 </div>
 
                 <div className="pt-6 sm:pt-8 md:pt-10 border-t border-black/5 dark:border-white/5 space-y-4 sm:space-y-6">
-                  <h3 className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 font-bold">Core Performance</h3>
+                  <h3 className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 font-bold">{t.detail.corePerformance}</h3>
                   <div className="space-y-3 sm:space-y-4">
                     <div className="flex justify-between items-center">
-                      <span className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">Web Vitals</span>
-                      <span className="text-emerald-500 font-mono text-[10px] sm:text-xs font-bold">Grade A+</span>
+                      <span className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">{t.detail.webVitals}</span>
+                      <span className="text-emerald-500 font-mono text-[10px] sm:text-xs font-bold">{t.detail.grade}</span>
                     </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">Accessibility</span>
-                      <span className="text-brand-purple font-mono text-[10px] sm:text-xs font-bold">AA Ready</span>
+                      <span className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">{t.detail.accessibility}</span>
+                      <span className="text-brand-purple font-mono text-[10px] sm:text-xs font-bold">{t.detail.aaReady}</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="pt-6 sm:pt-8 md:pt-10 border-t border-black/5 dark:border-white/5">
-                  <h3 className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 font-bold mb-4 sm:mb-6">Technologies</h3>
+                  <h3 className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 font-bold mb-4 sm:mb-6">{t.detail.technologies}</h3>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {project.tech_stack.map(tech => (
                       <span key={tech} className="px-2 sm:px-3 py-1 sm:py-1.5 bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-lg text-[8px] sm:text-[9px] font-mono text-slate-600 dark:text-slate-300 uppercase font-bold tracking-wider">
@@ -175,7 +178,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
                   </div>
                 </div>
 
-                <Button className="w-full h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg text-white rounded-xl sm:rounded-2xl shadow-2xl shadow-brand-purple/20" onClick={() => sendWhatsAppMessage()}>Iniciar Projeto Elite</Button>
+                <Button className="w-full h-12 sm:h-14 md:h-16 text-sm sm:text-base md:text-lg text-white rounded-xl sm:rounded-2xl shadow-2xl shadow-brand-purple/20" onClick={() => sendWhatsAppMessage(t.whatsappMessage)}>{t.detail.startProject}</Button>
               </div>
             </div>
           </aside>

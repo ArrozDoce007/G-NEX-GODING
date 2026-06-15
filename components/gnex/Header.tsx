@@ -1,27 +1,43 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, Sun, Moon, Home, Briefcase, FolderOpen, Lightbulb } from 'lucide-react';
+import { Sun, Moon, Home, Briefcase, FolderOpen, Lightbulb, Globe, ChevronDown } from 'lucide-react';
+import { Locale, LANGUAGES, useLanguage } from '@/lib/i18n';
 
 interface HeaderProps {
   toggleTheme: () => void;
   isDark: boolean;
   isViewingProject?: boolean;
+  currentLanguage?: Locale;
+  onLanguageChange?: (lang: Locale) => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, isViewingProject = false }) => {
+  const { t, lang, setLang } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-
+      
       // Detect active section - check from bottom to top of page
       const sections = ['methodology', 'projects', 'showcase', 'home'];
       let current = 'home';
-
+      
       for (const section of sections) {
         if (section === 'home') {
           // Home is active only when at the very top
@@ -61,11 +77,13 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, isViewingProject =
   };
 
   const navItems = [
-    { id: 'home', label: 'Inicio', icon: Home },
-    { id: 'showcase', label: 'Showcase', icon: Briefcase },
-    { id: 'projects', label: 'Portfolio', icon: FolderOpen },
-    { id: 'methodology', label: 'Metodo', icon: Lightbulb },
+    { id: 'home', label: t.nav.home, icon: Home },
+    { id: 'showcase', label: t.nav.showcase, icon: Briefcase },
+    { id: 'projects', label: t.nav.portfolio, icon: FolderOpen },
+    { id: 'methodology', label: t.nav.method, icon: Lightbulb },
   ];
+
+  const currentLang = LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0];
 
   return (
     <>
@@ -74,16 +92,17 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, isViewingProject =
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-            ? 'bg-white/70 dark:bg-slate-900/70 backdrop-blur-2xl shadow-lg shadow-black/5 dark:shadow-black/20 border-b border-black/5 dark:border-white/5'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled 
+            ? 'bg-white/70 dark:bg-slate-900/70 backdrop-blur-2xl shadow-lg shadow-black/5 dark:shadow-black/20 border-b border-black/5 dark:border-white/5' 
             : 'bg-transparent'
-          }`}
+        }`}
       >
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 sm:h-18 md:h-20">
             <a href="#/" className="flex items-center gap-2 sm:gap-3 group">
-              <div className="p-1.5 sm:p-2 rounded-xl bg-brand-purple/10 border border-brand-purple/20 group-hover:bg-brand-purple group-hover:rotate-[15deg] transition-all duration-300">
-                <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-brand-purple group-hover:text-white" />
+              <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-brand-purple via-violet-500 to-brand-purple flex items-center justify-center shadow-lg shadow-brand-purple/20 group-hover:shadow-xl group-hover:shadow-brand-purple/30 transition-all duration-300 group-hover:scale-105">
+                <span className="text-white font-bold text-sm sm:text-base md:text-lg">G</span>
               </div>
               <span className="font-chakra text-xl sm:text-2xl tracking-wider text-slate-900 dark:text-white uppercase">
                 G-NEX<span className="text-brand-purple">.CODING</span>
@@ -96,10 +115,11 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, isViewingProject =
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${activeSection === item.id
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                    activeSection === item.id
                       ? 'text-brand-purple bg-brand-purple/10'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5'
-                    }`}
+                  }`}
                 >
                   {item.label}
                 </button>
@@ -107,6 +127,50 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, isViewingProject =
             </nav>
 
             <div className="flex items-center gap-2 sm:gap-3">
+              {/* Language Selector */}
+              <div className="relative" ref={langRef}>
+                <motion.button
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setLangOpen((v) => !v)}
+                  aria-label={t.language}
+                  className="h-9 sm:h-10 md:h-11 px-2.5 sm:px-3 rounded-lg sm:rounded-xl flex items-center gap-1.5 border border-black/10 dark:border-white/10 bg-white/50 dark:bg-slate-800/50 hover:bg-white dark:hover:bg-slate-800 hover:border-brand-purple/30 hover:shadow-lg hover:shadow-brand-purple/10 transition-all duration-300 group"
+                >
+                  <Globe className="w-4 h-4 sm:w-5 sm:h-5 text-slate-600 dark:text-slate-300 group-hover:text-brand-purple transition-colors" />
+                  <span className="text-[10px] sm:text-xs font-bold uppercase text-slate-600 dark:text-slate-300 group-hover:text-brand-purple transition-colors">{currentLang.flag}</span>
+                  <ChevronDown className={`w-3 h-3 text-slate-500 dark:text-slate-400 transition-transform duration-300 ${langOpen ? 'rotate-180' : ''}`} />
+                </motion.button>
+
+                <AnimatePresence>
+                  {langOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -8, scale: 0.96 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -8, scale: 0.96 }}
+                      transition={{ duration: 0.18 }}
+                      className="absolute right-0 mt-2 w-44 rounded-xl overflow-hidden border border-black/10 dark:border-white/10 bg-white/90 dark:bg-slate-900/90 backdrop-blur-2xl shadow-xl shadow-black/10 dark:shadow-black/40 z-50"
+                    >
+                      {LANGUAGES.map((language) => (
+                        <button
+                          key={language.code}
+                          onClick={() => {
+                            setLang(language.code);
+                            setLangOpen(false);
+                          }}
+                          className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors duration-200 ${
+                            lang === language.code
+                              ? 'text-brand-purple bg-brand-purple/10'
+                              : 'text-slate-600 dark:text-slate-300 hover:bg-black/5 dark:hover:bg-white/5'
+                          }`}
+                        >
+                          <span className="text-[10px] font-bold uppercase w-6 text-center px-1 py-0.5 rounded bg-black/5 dark:bg-white/10">{language.flag}</span>
+                          {language.label}
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={toggleTheme}
@@ -152,17 +216,20 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, isViewingProject =
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-xl transition-all duration-300 min-w-[60px] ${isActive
+                  className={`flex flex-col items-center justify-center gap-1 px-3 py-2 rounded-xl transition-all duration-300 min-w-[60px] ${
+                    isActive
                       ? 'text-brand-purple'
                       : 'text-slate-500 dark:text-slate-400'
-                    }`}
+                  }`}
                 >
-                  <div className={`p-1.5 rounded-lg transition-all duration-300 ${isActive ? 'bg-brand-purple/10' : ''
-                    }`}>
+                  <div className={`p-1.5 rounded-lg transition-all duration-300 ${
+                    isActive ? 'bg-brand-purple/10' : ''
+                  }`}>
                     <Icon className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'scale-110' : ''}`} />
                   </div>
-                  <span className={`text-[10px] font-medium transition-all duration-300 ${isActive ? 'font-bold' : ''
-                    }`}>
+                  <span className={`text-[10px] font-medium transition-all duration-300 ${
+                    isActive ? 'font-bold' : ''
+                  }`}>
                     {item.label}
                   </span>
                 </button>

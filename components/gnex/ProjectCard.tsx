@@ -4,6 +4,7 @@ import React, { memo } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { Project, ProjectStatus } from '@/lib/types';
 import Badge from './Badge';
+import { useLanguage } from '@/lib/i18n';
 
 interface ProjectCardProps {
   project: Project;
@@ -11,14 +12,16 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onClick }) => {
+  const { t } = useLanguage();
+
   const getStatusBadge = (status: ProjectStatus) => {
     switch (status) {
       case ProjectStatus.DEVELOPMENT:
-        return <Badge variant="gray">Em Desenvolvimento</Badge>;
+        return <Badge variant="gray">{t.status.development}</Badge>;
       case ProjectStatus.HOMOLOGATION:
-        return <Badge variant="purple" pulse>Homologação</Badge>;
+        return <Badge variant="purple" pulse>{t.status.homologation}</Badge>;
       case ProjectStatus.DELIVERED:
-        return <Badge variant="green">Entregue</Badge>;
+        return <Badge variant="green">{t.status.delivered}</Badge>;
       default:
         return null;
     }

@@ -5,9 +5,10 @@ import { ArrowRight, Layout, Monitor, Smartphone } from 'lucide-react';
 import React from 'react';
 import Button from './Button';
 import { sendWhatsAppMessage } from '@/lib/whatsapp';
-import SocialIcons from './SocialIcons';
+import { useLanguage } from '@/lib/i18n';
 
 const Hero: React.FC = () => {
+  const { t } = useLanguage();
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -30,7 +31,7 @@ const Hero: React.FC = () => {
             <div className="relative">
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[16px] sm:rounded-[20px] bg-gradient-to-br from-brand-purple via-violet-500 to-transparent p-[1px]">
                 <div className="w-full h-full rounded-[15px] sm:rounded-[19px] overflow-hidden bg-white dark:bg-slate-950 flex items-center justify-center transition-colors duration-500">
-                  <span className="text-lg sm:text-xl font-chakra text-brand-purple dark:text-white">G</span>
+                  <span className="text-lg sm:text-xl font-bold text-brand-purple dark:text-white">G</span>
                 </div>
               </div>
               <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border-[3px] sm:border-4 border-slate-50 dark:border-[#0a0a0f] shadow-lg shadow-emerald-500/40 animate-pulse transition-colors duration-500" />
@@ -38,10 +39,9 @@ const Hero: React.FC = () => {
             <div className="flex flex-col">
               <h2 className="text-slate-900 dark:text-white text-lg sm:text-xl font-chakra tracking-wider transition-colors duration-500 uppercase">G-NEX CODING</h2>
               <span className="text-brand-purple dark:text-brand-purple/90 text-[8px] sm:text-[9px] font-mono flex items-center gap-2 uppercase tracking-[0.2em] sm:tracking-[0.3em] font-bold">
-                Elite Developer • On Call
+                {t.hero.tagline}
               </span>
             </div>
-            <SocialIcons />
           </motion.div>
 
           <motion.h1
@@ -50,9 +50,9 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6 sm:mb-8 tracking-tighter text-shadow-sm"
           >
-            <span className="text-slate-900 dark:text-white transition-colors duration-500">Design Web & <br className="hidden sm:block" /><span className="sm:hidden"> </span>Código de </span>
+            <span className="text-slate-900 dark:text-white transition-colors duration-500">{t.hero.titleA}<br className="hidden sm:block" /><span className="sm:hidden"> </span>{t.hero.titleB}</span>
             <span className="text-transparent bg-clip-text bg-gradient-to-br from-brand-purple via-violet-400 to-violet-600 dark:from-brand-purple dark:to-violet-400">
-              Elite.
+              {t.hero.titleHighlight}
             </span>
           </motion.h1>
 
@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-base sm:text-lg md:text-2xl text-slate-700 dark:text-slate-300 max-w-2xl mb-8 sm:mb-10 leading-relaxed font-light transition-colors duration-500"
           >
-            Elevando o padrão digital através de interfaces memoráveis e engenharia de software de precisão.
+            {t.hero.subtitle}
           </motion.p>
 
           <motion.div
@@ -75,22 +75,22 @@ const Hero: React.FC = () => {
               onClick={() => scrollToSection('projects')}
               className="h-12 sm:h-14 px-6 sm:px-10 text-sm sm:text-base text-white rounded-xl sm:rounded-2xl shadow-xl shadow-brand-purple/30 w-full sm:w-auto"
             >
-              Explorar Projetos
+              {t.hero.ctaProjects}
             </Button>
             <Button
               onClick={() => scrollToSection('methodology')}
               variant="secondary"
               className="h-12 sm:h-14 px-6 sm:px-10 text-sm sm:text-base text-slate-700 dark:text-white bg-slate-200/50 dark:bg-white/10 backdrop-blur-xl border-slate-300 dark:border-white/20 hover:bg-slate-300/50 dark:hover:bg-white/20 rounded-xl sm:rounded-2xl transition-all w-full sm:w-auto"
             >
-              Metodologia
+              {t.hero.ctaMethod}
             </Button>
             <Button
-              onClick={() => sendWhatsAppMessage()}
+              onClick={() => sendWhatsAppMessage(t.whatsappMessage)}
               variant="secondary"
               className="h-12 sm:h-14 px-6 sm:px-10 text-sm sm:text-base text-slate-700 dark:text-white bg-slate-200/50 dark:bg-white/10 backdrop-blur-xl border-slate-300 dark:border-white/20 hover:bg-slate-300/50 dark:hover:bg-white/20 rounded-xl sm:rounded-2xl transition-all w-full sm:w-auto"
               icon={<ArrowRight />}
             >
-              Cotar um Projeto
+              {t.hero.ctaQuote}
             </Button>
           </motion.div>
 
@@ -105,8 +105,8 @@ const Hero: React.FC = () => {
                 <Layout className="w-5 h-5 text-brand-purple" />
               </div>
               <div>
-                <h3 className="font-bold text-slate-900 dark:text-white mb-1 text-base sm:text-lg transition-colors duration-500">UI/UX Strategy</h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed transition-colors duration-500">Design focado em psicologia e fluxos de alta fidelidade.</p>
+                <h3 className="font-bold text-slate-900 dark:text-white mb-1 text-base sm:text-lg transition-colors duration-500">{t.hero.features[0].title}</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed transition-colors duration-500">{t.hero.features[0].desc}</p>
               </div>
             </div>
             <div className="flex flex-col gap-3 sm:gap-4 group">
@@ -114,8 +114,8 @@ const Hero: React.FC = () => {
                 <Monitor className="w-5 h-5 text-brand-purple" />
               </div>
               <div>
-                <h3 className="font-bold text-slate-900 dark:text-white mb-1 text-base sm:text-lg transition-colors duration-500">SaaS & Dashboards</h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed transition-colors duration-500">Aplicações complexas escaláveis com arquitetura limpa.</p>
+                <h3 className="font-bold text-slate-900 dark:text-white mb-1 text-base sm:text-lg transition-colors duration-500">{t.hero.features[1].title}</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed transition-colors duration-500">{t.hero.features[1].desc}</p>
               </div>
             </div>
             <div className="flex flex-col gap-3 sm:gap-4 group sm:col-span-2 md:col-span-1">
@@ -123,8 +123,8 @@ const Hero: React.FC = () => {
                 <Smartphone className="w-5 h-5 text-brand-purple" />
               </div>
               <div>
-                <h3 className="font-bold text-slate-900 dark:text-white mb-1 text-base sm:text-lg transition-colors duration-500">High Conversion</h3>
-                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed transition-colors duration-500">Landing pages ultra-rápidas focadas em ROI e performance.</p>
+                <h3 className="font-bold text-slate-900 dark:text-white mb-1 text-base sm:text-lg transition-colors duration-500">{t.hero.features[2].title}</h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed transition-colors duration-500">{t.hero.features[2].desc}</p>
               </div>
             </div>
           </motion.div>

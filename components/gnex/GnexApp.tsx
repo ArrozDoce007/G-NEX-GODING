@@ -8,8 +8,11 @@ import ProjectDetail from './ProjectDetail';
 import BubblesBackground from './BubblesBackground';
 import SocialIcons from './SocialIcons';
 import { projectsData } from '@/lib/projects';
+import { LanguageProvider, useLanguage } from '@/lib/i18n';
+import { useLocalizedProject } from '@/lib/useLocalizedProjects';
 
-const GnexApp: React.FC = () => {
+const GnexContent: React.FC = () => {
+  const { t, lang, setLang } = useLanguage();
   const [activeProjectId, setActiveProjectId] = useState<string | null>(null);
   const [isDark, setIsDark] = useState(true);
 
@@ -39,14 +42,14 @@ const GnexApp: React.FC = () => {
   const handleProjectClick = (id: string) => { window.location.hash = `#/project/${id}`; };
   const handleBackToGrid = () => { window.location.hash = '#/'; };
 
-  const activeProject = projectsData.find(p => p.id === activeProjectId);
+  const activeProject = useLocalizedProject(activeProjectId);
 
   return (
     <div className="relative min-h-screen bg-transparent selection:bg-brand-purple selection:text-white overflow-x-hidden transition-colors duration-500">
       <BubblesBackground />
       
       <div className="relative z-10">
-        <Header toggleTheme={toggleTheme} isDark={isDark} isViewingProject={!!activeProject} />
+        <Header toggleTheme={toggleTheme} isDark={isDark} isViewingProject={!!activeProject} currentLanguage={lang} onLanguageChange={setLang} />
         
         <AnimatePresence mode="wait">
           {activeProject ? (
@@ -76,20 +79,28 @@ const GnexApp: React.FC = () => {
           <div className="container mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
             <div className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm font-chakra tracking-wider flex items-center gap-2 text-center md:text-left">
               <span className="w-2 h-2 rounded-full bg-brand-purple/40"></span>
-              &copy; 2026 G-NEX.CODING // WEB DESIGN & DEVELOPMENT
+              &copy; 2026 G-NEX.CODING // {t.footer.tagline}
             </div>
             
             <div className="flex flex-col items-center gap-4 sm:gap-6">
               <SocialIcons />
               <div className="flex gap-6 sm:gap-8">
-                <a href="#" className="text-[10px] sm:text-xs uppercase tracking-widest text-slate-500 hover:text-brand-purple transition-colors">Stack Guide</a>
-                <a href="#" className="text-[10px] sm:text-xs uppercase tracking-widest text-slate-500 hover:text-brand-purple transition-colors">Processo</a>
+                <a href="#" className="text-[10px] sm:text-xs uppercase tracking-widest text-slate-500 hover:text-brand-purple transition-colors">{t.footer.stackGuide}</a>
+                <a href="#" className="text-[10px] sm:text-xs uppercase tracking-widest text-slate-500 hover:text-brand-purple transition-colors">{t.footer.process}</a>
               </div>
             </div>
           </div>
         </footer>
       </div>
     </div>
+  );
+};
+
+const GnexApp: React.FC = () => {
+  return (
+    <LanguageProvider>
+      <GnexContent />
+    </LanguageProvider>
   );
 };
 

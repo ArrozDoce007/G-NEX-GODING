@@ -2,14 +2,17 @@
 
 import React, { useRef, useEffect, useState, TouchEvent, memo } from 'react';
 import { ChevronLeft, ChevronRight, ArrowUpRight, MapPin } from 'lucide-react';
-import { projectsData } from '@/lib/projects';
 import { ProjectStatus } from '@/lib/types';
+import { useLanguage } from '@/lib/i18n';
+import { useLocalizedProjects } from '@/lib/useLocalizedProjects';
 
 interface ProjectCarouselProps {
   onProjectClick: (id: string) => void;
 }
 
 const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ onProjectClick }) => {
+  const { t } = useLanguage();
+  const localizedProjects = useLocalizedProjects();
   const [active, setActive] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [isInView, setIsInView] = useState(false);
@@ -17,7 +20,16 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ onProjectClick }) => 
   const [touchStart, setTouchStart] = useState<number | null>(null);
   
   const rotateInterval = 5000;
-  const items = projectsData.slice(0, 5);
+  const items = localizedProjects.slice(0, 5);
+
+  const getStatusLabel = (status: ProjectStatus) => {
+    switch (status) {
+      case ProjectStatus.DEVELOPMENT: return t.status.development;
+      case ProjectStatus.HOMOLOGATION: return t.status.homologation;
+      case ProjectStatus.DELIVERED: return t.status.delivered;
+      default: return status;
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -101,14 +113,14 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ onProjectClick }) => 
 
               {/* Tag de Status */}
               <div className={`absolute top-4 sm:top-6 left-0 ${getStatusColor(project.status)} text-white text-[8px] sm:text-[9px] uppercase tracking-[0.15em] sm:tracking-[0.2em] font-bold py-1 sm:py-1.5 px-3 sm:px-5 rounded-r-full shadow-lg transform -translate-x-1 transition-transform group-hover:translate-x-0`}>
-                {project.status.toUpperCase()}
+                {getStatusLabel(project.status).toUpperCase()}
               </div>
 
               {/* Conteúdo */}
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 flex flex-col justify-end">
                 <div className="flex items-center gap-2 text-brand-purple/90 mb-1 sm:mb-2">
                    <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                   <span className="text-[8px] sm:text-[9px] font-mono font-bold uppercase tracking-widest">Entrega Global </span>
+                   <span className="text-[8px] sm:text-[9px] font-mono font-bold uppercase tracking-widest">{t.carousel.globalDelivery}</span>
                 </div>
                 
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-3 leading-tight text-shadow-sm line-clamp-2">
