@@ -137,7 +137,7 @@ export const translations = {
     ],
     footer: { tagline: 'WEB DESIGN & DEVELOPMENT', stackGuide: 'Stack Guide', process: 'Process' },
     language: 'Language',
-    whatsappMessage: 'I want a project quote',
+    whatsappMessage: 'I want request a project',
   },
   es: {
     nav: { home: 'Inicio', showcase: 'Showcase', portfolio: 'Portafolio', method: 'Método' },
