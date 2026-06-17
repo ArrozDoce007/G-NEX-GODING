@@ -37,11 +37,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: 'https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/G-NEX-CODING/icon.png',
-        sizes: '32x32',
-        type: 'image/png',
+        url: 'https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/G-NEX-CODING/favicon.ico',
+        sizes: '48x48',
+        type: 'image/x-icon',
       },
     ],
+    shortcut: ['https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/G-NEX-CODING/favicon.ico'],
   },
 }
 
