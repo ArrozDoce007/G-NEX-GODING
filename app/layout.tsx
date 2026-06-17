@@ -15,7 +15,7 @@ const chakraPetch = Chakra_Petch({
 export const metadata: Metadata = {
   title: 'G-Nex Coding | Portfolio Elite',
   description: 'Web design e desenvolvimento de alto padrão. Sites modernos, landing pages e aplicações web performáticas.',
-  generator: 'v0.app',
+  generator: 'G-Nex Coding',
   metadataBase: new URL('https://g-nex-coding.com.br'),
 
   openGraph: {
