@@ -5,9 +5,9 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 export type Locale = 'pt' | 'en' | 'es';
 
 export const LANGUAGES: { code: Locale; label: string; flag: string }[] = [
-  { code: 'pt', label: 'Português', flag: 'BR' },
-  { code: 'en', label: 'English', flag: 'US' },
-  { code: 'es', label: 'Español', flag: 'ES' },
+  { code: 'pt', label: 'Português', flag: 'https://flagcdn.com/br.svg' },
+  { code: 'en', label: 'English', flag: 'https://flagcdn.com/us.svg' },
+  { code: 'es', label: 'Español', flag: 'https://flagcdn.com/es.svg' },
 ];
 
 type Dict = typeof translations.pt;
