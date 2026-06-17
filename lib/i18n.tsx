@@ -358,40 +358,25 @@ interface LanguageContextValue {
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [lang, setLangState] = useState<Locale>('pt');
+  const [lang, setLangState] = useState<Locale>('en');
 
   useEffect(() => {
-    const [lang, setLangState] = useState<Locale>(() => {
-      if (typeof window === 'undefined') return 'en';
+    const stored = localStorage.getItem('gnex-lang') as Locale | null;
 
-      const stored = localStorage.getItem('gnex-lang') as Locale | null;
-
-      if (stored && ['pt', 'en', 'es'].includes(stored)) {
-        return stored;
-      }
-
-      const browserLang = navigator.language.toLowerCase();
-
-      if (browserLang.startsWith('pt')) return 'pt';
-      if (browserLang.startsWith('es')) return 'es';
-
-      return 'en';
-    });
+    if (stored && ['pt', 'en', 'es'].includes(stored)) {
+      setLangState(stored);
+      return;
+    }
 
     const browserLang = navigator.language.toLowerCase();
 
-    let detectedLang: Locale = 'en';
-
     if (browserLang.startsWith('pt')) {
-      detectedLang = 'pt';
+      setLangState('pt');
     } else if (browserLang.startsWith('es')) {
-      detectedLang = 'es';
+      setLangState('es');
+    } else {
+      setLangState('en');
     }
-
-    setLangState(detectedLang);
-    localStorage.setItem('gnex-lang', detectedLang);
-    document.documentElement.lang =
-      detectedLang === 'pt' ? 'pt-BR' : detectedLang;
   }, []);
 
   const setLang = (next: Locale) => {
