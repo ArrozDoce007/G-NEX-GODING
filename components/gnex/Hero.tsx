@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Terminal, ArrowRight, Layout, Monitor, Smartphone } from 'lucide-react';
 import React from 'react';
 import Button from './Button';
+import SocialIcons from './SocialIcons';
 import { sendWhatsAppMessage } from '@/lib/whatsapp';
 import { useLanguage } from '@/lib/i18n';
 
@@ -40,6 +41,7 @@ const Hero: React.FC = () => {
                 {t.hero.tagline}
               </span>
             </div>
+            <SocialIcons />
           </motion.div>
 
           <motion.h1
