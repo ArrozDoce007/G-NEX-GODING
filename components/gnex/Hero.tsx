@@ -30,8 +30,8 @@ const Hero: React.FC = () => {
             className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8"
           >
             <div className="relative group cursor-pointer">
-              <div className="p-1.5 sm:p-2 rounded-xl bg-brand-purple/10 border border-brand-purple/20 group-hover:bg-brand-purple group-hover:rotate-[15deg] transition-all duration-300">
-                <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-brand-purple group-hover:text-white transition-colors duration-300" />
+              <div className="p-1.5 sm:p-2">
+                <img src="https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/G-NEX-CODING/favicon.ico" className="w-8 h-8 sm:w-8 sm:h-8" />
               </div>
               <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border-[3px] sm:border-4 border-slate-50 dark:border-[#0a0a0f] shadow-lg shadow-emerald-500/40 animate-pulse transition-colors duration-500" />
             </div>

@@ -100,8 +100,8 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, isViewingProject =
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16 sm:h-18 md:h-20">
             <a href="#/" className="flex items-center gap-2 sm:gap-3 group">
-              <div className="p-1.5 sm:p-2 rounded-xl bg-br and-purple/10 border border-brand-purple/20 group-hover:bg-brand-purple group-hover:rotate-[15deg] transition-all duration-300">
-                <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-brand-purple group-hover:text-white" />
+              <div className="p-1.5 sm:p-2">
+                <img src="https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/G-NEX-CODING/favicon.ico" className="w-8 h-8 sm:w-8 sm:h-8" />
               </div>
               <span className="font-chakra text-xl sm:text-2xl tracking-wider text-slate-900 dark:text-white uppercase">
                 G-NEX<span className="text-brand-purple">.CODING</span>
