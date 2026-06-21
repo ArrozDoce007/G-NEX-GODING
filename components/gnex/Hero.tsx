@@ -24,25 +24,7 @@ const Hero: React.FC = () => {
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <div className="max-w-5xl">
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-4 sm:gap-6 mb-6 sm:mb-8"
-          >
-            <div className="relative group cursor-pointer">
-              <div className="p-1.5 sm:p-2">
-                <img src="https://imagens-pagina-web.s3.sa-east-1.amazonaws.com/G-NEX-CODING/favicon.ico" className="w-8 h-8 sm:w-8 sm:h-8" />
-              </div>
-              <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 sm:w-4 sm:h-4 bg-emerald-500 rounded-full border-[3px] sm:border-4 border-slate-50 dark:border-[#0a0a0f] shadow-lg shadow-emerald-500/40 animate-pulse transition-colors duration-500" />
-            </div>
-            <div className="flex flex-col">
-              <h2 className="text-slate-900 dark:text-white text-lg sm:text-xl font-chakra tracking-wider transition-colors duration-500 uppercase">G-NEX CODING</h2>
-              <span className="text-brand-purple dark:text-brand-purple/90 text-[8px] sm:text-[9px] font-mono flex items-center gap-2 uppercase tracking-[0.2em] sm:tracking-[0.3em] font-bold">
-                {t.hero.tagline}
-              </span>
-            </div>
-            <SocialIcons />
-          </motion.div>
+          
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
