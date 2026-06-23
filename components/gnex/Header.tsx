@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Home, Briefcase, FolderOpen, Lightbulb, Globe, ChevronDown } from 'lucide-react';
+import { Sun, Moon, Home, Briefcase, FolderOpen, Lightbulb, ChevronDown } from 'lucide-react';
 import { Locale, LANGUAGES, useLanguage } from '@/lib/i18n';
 
 interface HeaderProps {
