@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Terminal, ArrowRight, Layout, Monitor, Smartphone } from 'lucide-react';
+import { ArrowRight, Layout, Monitor, Smartphone } from 'lucide-react';
 import React from 'react';
 import Button from './Button';
 import SocialIcons from './SocialIcons';

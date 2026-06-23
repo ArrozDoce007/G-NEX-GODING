@@ -30,7 +30,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
           animate={{ opacity: 1, x: 0 }}
           whileTap={{ scale: 0.98 }}
           onClick={onBack}
-          className="flex items-center text-white  bg-brand-purple/30 sm:rounded-2xl shadow-xl shadow-brand-purple/80 gap-2 px-3 sm:px-4 py-2 -ml-3 sm:-ml-4 rounded-xl transition-all duration-300 mb-8 sm:mb-12 group text-sm sm:text-base"
+          className="inline-flex items-center gap-2 px-6 sm:px-8 h-12 sm:h-14 rounded-xl sm:rounded-2xl text-slate-700 dark:text-white bg-slate-200/50 dark:bg-white/10 backdrop-blur-xl border border-slate-300 dark:border-white/20 hover:bg-slate-300/50 dark:hover:bg-white/20 transition-all duration-300 mb-8 sm:mb-12 group text-sm sm:text-base font-medium"
         >
           <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           {t.detail.back}
@@ -39,7 +39,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16">
           <div className="lg:col-span-8 space-y-12 sm:space-y-16 md:space-y-24">
             <header>
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 sm:mb-8"
@@ -48,8 +48,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
                 <div className="h-4 w-px bg-black/10 dark:bg-white/10 hidden sm:block" />
                 <span className="text-xs sm:text-sm font-mono text-slate-400 dark:text-slate-500 uppercase tracking-widest font-bold">{t.detail.caseId}: {project.id.toUpperCase()}</span>
               </motion.div>
-              
-              <motion.h1 
+
+              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
@@ -58,22 +58,22 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
                 {project.title}
               </motion.h1>
 
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.15 }}
                 className="relative aspect-video rounded-xl sm:rounded-2xl md:rounded-[32px] overflow-hidden border border-black/5 dark:border-white/5 mb-8 sm:mb-12 md:mb-16 shadow-2xl shadow-brand-purple/10 bg-slate-100 dark:bg-slate-900/50"
               >
-                <img 
-                  src={project.image} 
-                  alt={`Captura de tela detalhada do projeto ${project.title}`} 
-                  className="w-full object-cover opacity-90 dark:opacity-80" 
+                <img
+                  src={project.image}
+                  alt={`Captura de tela detalhada do projeto ${project.title}`}
+                  className="w-full object-cover opacity-90 dark:opacity-80"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 dark:from-black/60 to-transparent" />
               </motion.div>
 
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
